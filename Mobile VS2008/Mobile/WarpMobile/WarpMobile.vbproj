@@ -1,0 +1,944 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8D9B9522-C062-47C7-AE2E-23CAF2C9FC47}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>WarpMobile.frmLoggin</StartupObject>
+    <RootNamespace>WarpMobile</RootNamespace>
+    <AssemblyName>WarpMobile</AssemblyName>
+    <ProjectTypeGuids>{68B1623D-7FB9-47D8-8664-7ECEA3297D4F};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <PlatformFamilyName>PocketPC</PlatformFamilyName>
+    <PlatformID>3C41C503-53EF-4c2a-8DD4-A8217CAD115E</PlatformID>
+    <OSVersion>4.20</OSVersion>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <DeployDirSuffix>WarpMobile</DeployDirSuffix>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FormFactorID>
+    </FormFactorID>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <ApplicationIcon>197.ICO</ApplicationIcon>
+    <SignAssembly>false</SignAssembly>
+    <DeployDirPrefix>%25CSIDL_PROGRAM_FILES%25</DeployDirPrefix>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <NativePlatformName>Pocket PC 2003</NativePlatformName>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>$(PlatformFamilyName)=TRUE</DefineConstants>
+    <DocumentationFile>WarpMobile.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <FileAlignment>512</FileAlignment>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>$(PlatformFamilyName)=TRUE</DefineConstants>
+    <DocumentationFile>WarpMobile.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <FileAlignment>512</FileAlignment>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.WindowsCE.Forms" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlClient, Version=3.0.3600.0, Culture=neutral, PublicKeyToken=3be235df1c8d2ad3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Archivos de programa\Microsoft Visual Studio 8\SmartDevices\SDK\\SQL Server\Client\v2.0\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataGrid" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="cAsynchronousClient.vb" />
+    <Compile Include="cDevoluciones.vb" />
+    <Compile Include="clsABAST.vb" />
+    <Compile Include="clsAceptar.vb" />
+    <Compile Include="clsCargaSeries.vb" />
+    <Compile Include="clsDecode2D.vb" />
+    <Compile Include="clsEmpaque.vb" />
+    <Compile Include="clsEnvases.vb" />
+    <Compile Include="clsGuardadoManual.vb" />
+    <Compile Include="ClsIngreso.vb" />
+    <Compile Include="clsProcesoIngreso.vb" />
+    <Compile Include="clsRecepcionGuardado.vb" />
+    <Compile Include="clsSocket.vb" />
+    <Compile Include="clsStockInicial.vb" />
+    <Compile Include="clsWinSockCliente.vb" />
+    <Compile Include="frmABAST.Designer.vb">
+      <DependentUpon>frmABAST.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmABAST.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmABASTDescarga.Designer.vb">
+      <DependentUpon>frmABASTDescarga.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmABASTDescarga.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmABASTPENDIENTES.Designer.vb">
+      <DependentUpon>frmABASTPENDIENTES.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmABASTPENDIENTES.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBultosPendientes.designer.vb">
+      <DependentUpon>frmBultosPendientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBultosPendientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuscaOc.Designer.vb">
+      <DependentUpon>FrmBuscaOc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBuscaOc.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuscarProducto.Designer.vb">
+      <DependentUpon>FrmBuscarProducto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBuscarProducto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuscarProveedor.Designer.vb">
+      <DependentUpon>FrmBuscarProveedor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBuscarProveedor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuscarRemito.Designer.vb">
+      <DependentUpon>FrmBuscarRemito.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBuscarRemito.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCambCatLog.Designer.vb">
+      <DependentUpon>frmCambCatLog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCambCatLog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCambEstMerc.Designer.vb">
+      <DependentUpon>frmCambEstMerc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCambEstMerc.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCargaSeries.Designer.vb">
+      <DependentUpon>frmCargaSeries.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCargaSeries.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCargaSeriesInvalidas.Designer.vb">
+      <DependentUpon>frmCargaSeriesInvalidas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCargaSeriesInvalidas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDevolucionesContenido.Designer.vb">
+      <DependentUpon>frmDevolucionesContenido.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDevolucionesContenido.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDevolucionesPedidos.Designer.vb">
+      <DependentUpon>frmDevolucionesPedidos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDevolucionesPedidos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEgresoConfirmacionPallet.Designer.vb">
+      <DependentUpon>frmEgresoConfirmacionPallet.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEgresoConfirmacionPallet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEgresoConversiones.Designer.vb">
+      <DependentUpon>frmEgresoConversiones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEgresoConversiones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpaque.Designer.vb">
+      <DependentUpon>frmEmpaque.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmpaque.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpaqueConfirmacionCarro.Designer.vb">
+      <DependentUpon>frmEmpaqueConfirmacionCarro.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmpaqueConfirmacionCarro.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpaqueConfirmacionCarros.Designer.vb">
+      <DependentUpon>frmEmpaqueConfirmacionCarros.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmpaqueConfirmacionCarros.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpaqueContenedores.Designer.vb">
+      <DependentUpon>frmEmpaqueContenedores.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmpaqueContenedores.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpaqueContenido.Designer.vb">
+      <DependentUpon>frmEmpaqueContenido.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmpaqueContenido.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpaquePendientes.Designer.vb">
+      <DependentUpon>frmEmpaquePendientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmpaquePendientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRecepcionGuardado.Designer.vb">
+      <DependentUpon>frmRecepcionGuardado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRecepcionGuardado.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRecepcionGuardadoContenido.Designer.vb">
+      <DependentUpon>frmRecepcionGuardadoContenido.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRecepcionGuardadoContenido.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRecepcionGuardadoUbicacion.Designer.vb">
+      <DependentUpon>frmRecepcionGuardadoUbicacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRecepcionGuardadoUbicacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStockInicialConf.Designer.vb">
+      <DependentUpon>frmStockInicialConf.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmStockInicialConf.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConsultaRecepOC.Designer.vb">
+      <DependentUpon>FrmConsultaRecepOC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConsultaRecepOC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmContenedorasOC.Designer.vb">
+      <DependentUpon>frmContenedorasOC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmContenedorasOC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmContenedorasPicking.Designer.vb">
+      <DependentUpon>frmContenedorasPicking.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmContenedorasPicking.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditContenedoras.Designer.vb">
+      <DependentUpon>frmEditContenedoras.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditContenedoras.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEgresoConfTotalPallet.Designer.vb">
+      <DependentUpon>frmEgresoConfTotalPallet.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEgresoConfTotalPallet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGManPendientes.Designer.vb">
+      <DependentUpon>frmGManPendientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmGManPendientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGuardadoxDoc.Designer.vb">
+      <DependentUpon>frmGuardadoxDoc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmGuardadoxDoc.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInventario.designer.vb">
+      <DependentUpon>frmInventario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInventario.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInventarioObservaciones.Designer.vb">
+      <DependentUpon>frmInventarioObservaciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInventarioObservaciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMarbete.designer.vb">
+      <DependentUpon>frmMarbete.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMarbete.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenuPrincipal.designer.vb">
+      <DependentUpon>frmMenuPrincipal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenuPrincipal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNroCarro.Designer.vb">
+      <DependentUpon>frmNroCarro.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNroCarro.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOrdenCompra.Designer.vb">
+      <DependentUpon>FrmOrdenCompra.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmOrdenCompra.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProcesoIngreso.Designer.vb">
+      <DependentUpon>FrmProcesoIngreso.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProcesoIngreso.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProductosCargados.Designer.vb">
+      <DependentUpon>FrmProductosCargados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProductosCargados.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRecepcionOC.Designer.vb">
+      <DependentUpon>FrmRecepcionOC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRecepcionOC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRecepcionOCLotePartida.Designer.vb">
+      <DependentUpon>frmRecepcionOCLotePartida.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRecepcionOCLotePartida.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSeries.designer.vb">
+      <DependentUpon>frmSeries.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSeries.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStockInicialStockByPos.Designer.vb">
+      <DependentUpon>frmStockInicialStockByPos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmStockInicialStockByPos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStockInicialToma.Designer.vb">
+      <DependentUpon>frmStockInicialToma.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmStockInicialToma.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransferenciaBultos.Designer.vb">
+      <DependentUpon>FrmTransferenciaBultos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransferenciaBultos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransferenciaBultosPalletContenedora.Designer.vb">
+      <DependentUpon>FrmTransferenciaBultosPalletContenedora.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransferenciaBultosPalletContenedora.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransferenciaBultos_Series.Designer.vb">
+      <DependentUpon>FrmTransferenciaBultos_Series.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransferenciaBultos_Series.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTransfPickingCompletadas.Designer.vb">
+      <DependentUpon>frmTransfPickingCompletadas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTransfPickingCompletadas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAPF.Designer.vb">
+      <DependentUpon>frmAPF.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAPF.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAPFPendientes.Designer.vb">
+      <DependentUpon>FrmAPFPendientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAPFPendientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAPF_Abiertos.Designer.vb">
+      <DependentUpon>FrmAPF_Abiertos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAPF_Abiertos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCalleNave.Designer.vb">
+      <DependentUpon>frmCalleNave.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCalleNave.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCODIGOS.Designer.vb">
+      <DependentUpon>frmCODIGOS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCODIGOS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaStock.Designer.vb">
+      <DependentUpon>frmConsultaStock.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaStock.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmControlPicking.Designer.vb">
+      <DependentUpon>frmControlPicking.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmControlPicking.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEgreso.Designer.vb">
+      <DependentUpon>frmEgreso.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEgreso.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEnvases.Designer.vb">
+      <DependentUpon>frmEnvases.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEnvases.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFinalizados.Designer.vb">
+      <DependentUpon>frmFinalizados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFinalizados.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLockPosicion.Designer.vb">
+      <DependentUpon>frmLockPosicion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLockPosicion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.vb">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGestionPalletViaje.Designer.vb">
+      <DependentUpon>frmGestionPalletViaje.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmGestionPalletViaje.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIngresoViajes.Designer.vb">
+      <DependentUpon>frmIngresoViajes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmIngresoViajes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipal.Designer.vb">
+      <DependentUpon>frmPrincipal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrincipal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProducto.Designer.vb">
+      <DependentUpon>frmProducto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmProducto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRecepcionODC.Designer.vb">
+      <DependentUpon>frmRecepcionODC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRecepcionODC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelectorClientes.Designer.vb">
+      <DependentUpon>FrmSelectorClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSelectorClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTransferenciaAutomatica.Designer.vb">
+      <DependentUpon>frmTransferenciaAutomatica.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTransferenciaAutomatica.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTransferenciaManual.Designer.vb">
+      <DependentUpon>frmTransferenciaManual.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTransferenciaManual.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTransfPicking.Designer.vb">
+      <DependentUpon>frmTransfPicking.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTransfPicking.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTransfPickingSelector.Designer.vb">
+      <DependentUpon>frmTransfPickingSelector.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTransfPickingSelector.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTransfSobrantesPick.Designer.vb">
+      <DependentUpon>frmTransfSobrantesPick.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTransfSobrantesPick.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTrdPosiciones.Designer.vb">
+      <DependentUpon>frmTrdPosiciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTrdPosiciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmubicacionBultos.designer.vb">
+      <DependentUpon>frmubicacionBultos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmubicacionBultos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUbicacionMercaderia.Designer.vb">
+      <DependentUpon>frmUbicacionMercaderia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmUbicacionMercaderia.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmValidaLote.Designer.vb">
+      <DependentUpon>FrmValidaLote.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmValidaLote.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVehiculo.Designer.vb">
+      <DependentUpon>frmVehiculo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmVehiculo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRepaletizado.Designer.vb">
+      <DependentUpon>frmRepaletizado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRepaletizado.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FuncionesEgreso.vb" />
+    <Compile Include="FuncionesGenerales.vb" />
+    <Compile Include="MenuWarp.vb" />
+    <Compile Include="ModuloGral.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TipoForm.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmABAST.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmABAST.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmABASTDescarga.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmABASTDescarga.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmABASTPENDIENTES.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmABASTPENDIENTES.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBultosPendientes.resx">
+      <DependentUpon>frmBultosPendientes.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBuscaOc.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmBuscaOc.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBuscarProducto.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmBuscarProducto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBuscarProveedor.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmBuscarProveedor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBuscarRemito.resx">
+      <DependentUpon>FrmBuscarRemito.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCambCatLog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmCambCatLog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCambEstMerc.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmCambEstMerc.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCargaSeries.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmCargaSeries.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCargaSeriesInvalidas.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmCargaSeriesInvalidas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDevolucionesContenido.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmDevolucionesContenido.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDevolucionesPedidos.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmDevolucionesPedidos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEgresoConfirmacionPallet.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmEgresoConfirmacionPallet.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEgresoConversiones.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmEgresoConversiones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpaque.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmEmpaque.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpaqueConfirmacionCarro.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmEmpaqueConfirmacionCarro.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpaqueConfirmacionCarros.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmEmpaqueConfirmacionCarros.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpaqueContenedores.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmEmpaqueContenedores.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpaqueContenido.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmEmpaqueContenido.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpaquePendientes.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmEmpaquePendientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRecepcionGuardado.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmRecepcionGuardado.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRecepcionGuardadoContenido.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmRecepcionGuardadoContenido.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRecepcionGuardadoUbicacion.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmRecepcionGuardadoUbicacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStockInicialConf.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmStockInicialConf.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConsultaRecepOC.resx">
+      <DependentUpon>FrmConsultaRecepOC.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmContenedorasOC.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmContenedorasOC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmContenedorasPicking.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmContenedorasPicking.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditContenedoras.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmEditContenedoras.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEgresoConfTotalPallet.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmEgresoConfTotalPallet.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGManPendientes.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmGManPendientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGuardadoxDoc.resx">
+      <DependentUpon>frmGuardadoxDoc.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInventario.resx">
+      <DependentUpon>frmInventario.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInventarioObservaciones.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmInventarioObservaciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMarbete.resx">
+      <DependentUpon>frmMarbete.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMenuPrincipal.resx">
+      <DependentUpon>frmMenuPrincipal.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNroCarro.resx">
+      <DependentUpon>frmNroCarro.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOrdenCompra.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmOrdenCompra.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProcesoIngreso.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmProcesoIngreso.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProductosCargados.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmProductosCargados.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRecepcionOC.resx">
+      <DependentUpon>FrmRecepcionOC.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRecepcionOCLotePartida.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmRecepcionOCLotePartida.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSeries.resx">
+      <DependentUpon>frmSeries.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStockInicialStockByPos.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmStockInicialStockByPos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStockInicialToma.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmStockInicialToma.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransferenciaBultos.resx">
+      <DependentUpon>FrmTransferenciaBultos.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransferenciaBultosPalletContenedora.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmTransferenciaBultosPalletContenedora.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransferenciaBultos_Series.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmTransferenciaBultos_Series.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTransfPickingCompletadas.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmTransfPickingCompletadas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAPF.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAPF.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAPFPendientes.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmAPFPendientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAPF_Abiertos.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmAPF_Abiertos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCalleNave.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmCalleNave.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCODIGOS.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmCODIGOS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaStock.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmConsultaStock.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmControlPicking.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmControlPicking.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEgreso.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmEgreso.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEnvases.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmEnvases.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFinalizados.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmFinalizados.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLockPosicion.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmLockPosicion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestionPalletViaje.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmGestionPalletViaje.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmIngresoViajes.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmIngresoViajes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipal.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPrincipal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProducto.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmProducto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRecepcionODC.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmRecepcionODC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSelectorClientes.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmSelectorClientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTransferenciaAutomatica.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmTransferenciaAutomatica.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTransferenciaManual.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmTransferenciaManual.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTransfPicking.resx">
+      <DependentUpon>frmTransfPicking.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTransfPickingSelector.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmTransfPickingSelector.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTransfSobrantesPick.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmTransfSobrantesPick.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTrdPosiciones.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmTrdPosiciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmubicacionBultos.resx">
+      <DependentUpon>frmubicacionBultos.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUbicacionMercaderia.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmUbicacionMercaderia.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmValidaLote.resx">
+      <DependentUpon>FrmValidaLote.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVehiculo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmVehiculo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRepaletizado.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmRepaletizado.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram3.cd" />
+    <None Include="Config.dat" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="197.ICO" />
+  </ItemGroup>
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v1.0'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.VisualBasic.v1.targets" />
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v2.0'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.VisualBasic.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{F184B08F-C81C-45F6-A57F-5ABD9991F28F}">
+        <HostingProcess disable="1" />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v3.5'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.VisualBasic.targets" />
+</Project>

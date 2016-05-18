@@ -1,0 +1,31 @@
+IF OBJECT_ID('[dbo].[MOB_ES_SERIES_EGRESO]','P') IS NOT NULL
+	DROP PROCEDURE [dbo].[MOB_ES_SERIES_EGRESO]
+	GO
+
+
+
+CREATE    PROCEDURE [dbo].[MOB_ES_SERIES_EGRESO]
+	@producto_id	AS VARCHAR(50),
+	@cliente_id		AS VARCHAR(50)
+AS
+	
+
+BEGIN
+		SELECT 		SERIE_EGR
+		FROM 		PRODUCTO
+		WHERE 		CLIENTE_ID = @cliente_id AND PRODUCTO_ID = @producto_id
+				
+END
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="WarpMobile">
+</Property><Property Name="Archivo de la solución" Value="C:\Users\Sebastian\Desktop\Mobile VS2008\Mobile\WarpMobile.sln">
+</Property><Property Name="Date" Value="lunes, 16 de mayo de 2016">
+</Property><Property Name="Time" Value="10:10 a. m.">
+</Property></Properties><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\WarpMobile.vbproj" Description="Proyecto convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\WarpMobile.vbproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="WarpMobile.sln" Description="La solución se convirtió correctamente">
+</Event><Event ErrorLevel="3" Project="" Source="WarpMobile.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmABAST.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmABAST.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmABASTDescarga.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmABASTDescarga.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmABASTPENDIENTES.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmABASTPENDIENTES.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmAPF.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmAPF.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\FrmAPF_Abiertos.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\FrmAPF_Abiertos.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\FrmAPFPendientes.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\FrmAPFPendientes.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmBultosPendientes.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmBultosPendientes.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\FrmBuscaOc.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\FrmBuscaOc.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\FrmBuscarProducto.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\FrmBuscarProducto.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\FrmBuscarProveedor.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\FrmBuscarProveedor.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\FrmBuscarRemito.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\FrmBuscarRemito.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmCalleNave.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmCalleNave.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmCambCatLog.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmCambCatLog.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmCambEstMerc.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmCambEstMerc.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmCargaSeries.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmCargaSeries.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmCargaSeriesInvalidas.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmCargaSeriesInvalidas.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmCODIGOS.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmCODIGOS.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\FrmConsultaRecepOC.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\FrmConsultaRecepOC.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmConsultaStock.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmConsultaStock.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmContenedorasOC.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmContenedorasOC.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmContenedorasPicking.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmContenedorasPicking.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmControlPicking.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmControlPicking.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmDevolucionesContenido.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmDevolucionesContenido.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmDevolucionesPedidos.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmDevolucionesPedidos.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmEditContenedoras.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmEditContenedoras.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmEgreso.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmEgreso.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmEgresoConfirmacionPallet.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmEgresoConfirmacionPallet.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmEgresoConfTotalPallet.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmEgresoConfTotalPallet.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmEgresoConversiones.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmEgresoConversiones.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmEmpaque.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmEmpaque.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmEmpaqueConfirmacionCarro.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmEmpaqueConfirmacionCarro.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmEmpaqueConfirmacionCarros.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmEmpaqueConfirmacionCarros.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmEmpaqueContenedores.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmEmpaqueContenedores.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmEmpaqueContenido.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmEmpaqueContenido.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmEmpaquePendientes.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmEmpaquePendientes.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmEnvases.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmEnvases.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmFinalizados.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmFinalizados.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmGestionPalletViaje.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmGestionPalletViaje.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmGManPendientes.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmGManPendientes.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmGuardadoxDoc.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmGuardadoxDoc.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmIngresoViajes.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmIngresoViajes.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmInventario.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmInventario.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmInventarioObservaciones.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmInventarioObservaciones.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmLockPosicion.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmLockPosicion.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmLogin.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmLogin.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmMarbete.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmMarbete.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmMenuPrincipal.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmMenuPrincipal.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmNroCarro.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmNroCarro.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\FrmOrdenCompra.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\FrmOrdenCompra.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmPrincipal.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmPrincipal.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\FrmProcesoIngreso.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\FrmProcesoIngreso.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmProducto.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmProducto.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\FrmProductosCargados.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\FrmProductosCargados.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmRecepcionGuardado.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmRecepcionGuardado.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmRecepcionGuardadoContenido.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmRecepcionGuardadoContenido.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmRecepcionGuardadoUbicacion.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmRecepcionGuardadoUbicacion.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\FrmRecepcionOC.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\FrmRecepcionOC.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmRecepcionOCLotePartida.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmRecepcionOCLotePartida.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmRecepcionODC.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmRecepcionODC.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmRepaletizado.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmRepaletizado.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\FrmSelectorClientes.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\FrmSelectorClientes.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmSeries.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmSeries.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmStockInicialConf.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmStockInicialConf.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmStockInicialStockByPos.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmStockInicialStockByPos.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmStockInicialToma.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmStockInicialToma.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmTransferenciaAutomatica.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmTransferenciaAutomatica.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\FrmTransferenciaBultos.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\FrmTransferenciaBultos.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\FrmTransferenciaBultos_Series.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\FrmTransferenciaBultos_Series.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\FrmTransferenciaBultosPalletContenedora.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\FrmTransferenciaBultosPalletContenedora.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmTransferenciaManual.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmTransferenciaManual.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmTransfPicking.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmTransfPicking.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmTransfPickingCompletadas.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmTransfPickingCompletadas.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmTransfPickingSelector.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmTransfPickingSelector.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmTransfSobrantesPick.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmTransfSobrantesPick.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmTrdPosiciones.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmTrdPosiciones.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmubicacionBultos.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmubicacionBultos.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmUbicacionMercaderia.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmUbicacionMercaderia.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\FrmValidaLote.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\FrmValidaLote.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\frmVehiculo.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\frmVehiculo.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\My Project\Resources.resx" Description="Archivo convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WarpMobile" Source="WarpMobile\My Project\Resources.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WarpMobile" Source="WarpMobile\WarpMobile.vbproj" Description="Examen completo: no es necesario actualizar los archivos de proyecto.">
+</Event></UpgradeLog>
