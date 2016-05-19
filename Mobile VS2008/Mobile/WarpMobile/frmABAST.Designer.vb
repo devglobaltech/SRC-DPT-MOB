@@ -90,7 +90,7 @@ Partial Public Class frmABAST
         Me.lblUbicacionOrigen.Location = New System.Drawing.Point(1, 144)
         Me.lblUbicacionOrigen.Name = "lblUbicacionOrigen"
         Me.lblUbicacionOrigen.Size = New System.Drawing.Size(237, 20)
-        Me.lblUbicacionOrigen.Text = "Ub. NP1-2-3-40-1 | Nro.Serie: 1s00000000"
+        Me.lblUbicacionOrigen.Text = "Ub. NP1-2-3-40-1 | Nro.Serie: 1s000000001"
         '
         'txtUbicacion
         '
