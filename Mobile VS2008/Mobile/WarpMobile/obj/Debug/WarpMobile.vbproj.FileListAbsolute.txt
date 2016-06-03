@@ -176,3 +176,4 @@ C:\Work\SRC-DPT-MOB\Mobile VS2008\Mobile\WarpMobile\obj\Debug\WarpMobile.vbproj.
 C:\Work\SRC-DPT-MOB\Mobile VS2008\Mobile\WarpMobile\obj\Debug\WarpMobile.exe
 C:\Work\SRC-DPT-MOB\Mobile VS2008\Mobile\WarpMobile\obj\Debug\WarpMobile.xml
 C:\Work\SRC-DPT-MOB\Mobile VS2008\Mobile\WarpMobile\obj\Debug\WarpMobile.pdb
+C:\Work\SRC-DPT-MOB\Mobile VS2008\Mobile\WarpMobile\obj\Debug\WarpMobile.frmModuloProduccion.resources

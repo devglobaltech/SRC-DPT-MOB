@@ -40,7 +40,6 @@ Partial Public Class frmMenuPrincipal
         Me.Button1.Size = New System.Drawing.Size(68, 24)
         Me.Button1.TabIndex = 1
         Me.Button1.Text = "Button1"
-        Me.Button1.Visible = False
         '
         'frmMenuPrincipal
         '

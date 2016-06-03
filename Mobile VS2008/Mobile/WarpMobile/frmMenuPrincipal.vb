@@ -594,7 +594,7 @@ Public Class frmMenuPrincipal
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        Dim frm As New frmRecepcionGuardado
+        Dim frm As New frmModuloProduccion
         frm.ShowDialog()
         frm.Dispose()
     End Sub

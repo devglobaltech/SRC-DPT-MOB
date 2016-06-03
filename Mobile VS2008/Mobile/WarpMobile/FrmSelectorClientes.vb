@@ -90,4 +90,8 @@ Public Class FrmSelectorClientes
         vUsr.ClienteActivo = Trim(Me.cmbClientes.SelectedValue)
         Me.Close()
     End Sub
+
+    Private Sub cmbClientes_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbClientes.SelectedIndexChanged
+
+    End Sub
 End Class

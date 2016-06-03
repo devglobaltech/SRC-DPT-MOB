@@ -104,6 +104,7 @@
     <Compile Include="clsSocket.vb" />
     <Compile Include="clsStockInicial.vb" />
     <Compile Include="clsWinSockCliente.vb" />
+    <Compile Include="cModuloProduccion.vb" />
     <Compile Include="frmABAST.Designer.vb">
       <DependentUpon>frmABAST.vb</DependentUpon>
     </Compile>
@@ -234,6 +235,12 @@
       <DependentUpon>frmEmpaquePendientes.vb</DependentUpon>
     </Compile>
     <Compile Include="frmEmpaquePendientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModuloProduccion.Designer.vb">
+      <DependentUpon>frmModuloProduccion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmModuloProduccion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmRecepcionGuardado.Designer.vb">
@@ -679,6 +686,9 @@
     <EmbeddedResource Include="frmEmpaquePendientes.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmEmpaquePendientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModuloProduccion.resx">
+      <DependentUpon>frmModuloProduccion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRecepcionGuardado.resx">
       <SubType>Designer</SubType>
