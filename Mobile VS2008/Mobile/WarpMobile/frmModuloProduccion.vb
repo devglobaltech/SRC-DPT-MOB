@@ -23,14 +23,19 @@ Public Class frmModuloProduccion
             Case Keys.F2
 
             Case Keys.F3
-
-            Case Keys.F4
                 Salir()
         End Select
     End Sub
 
     Private Sub Salir()
-        Me.Close()
+        If Me.OperacionEnCurso Then
+            If MsgBox("¿Desea cancelar la operacion en curso?", MsgBoxStyle.YesNo, frmName) = MsgBoxResult.Yes Then
+                OBJ.CancelarMovimientos()
+                Me.Close()
+            End If
+        Else
+            Me.Close()
+        End If
     End Sub
 
     Private Sub frmModuloProduccion_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -48,6 +53,7 @@ Public Class frmModuloProduccion
                     txt.Enabled = True
                     txt.Text = ""
                     txt.Visible = False
+                    txt.Enabled = True
                 End If
 
                 If (Ctrl.GetType() Is GetType(Label)) Then
@@ -65,6 +71,12 @@ Public Class frmModuloProduccion
                     Dim btn As Button = CType(Ctrl, Button)
                     btn.Enabled = True
                     btn.Visible = True
+                End If
+
+                If (Ctrl.GetType() Is GetType(ComboBox)) Then
+                    Dim cmb As ComboBox = CType(Ctrl, ComboBox)
+                    cmb.Enabled = True
+                    cmb.Visible = False
                 End If
             Next
             Me.cmbClientes.DataSource = Nothing
@@ -106,7 +118,13 @@ Public Class frmModuloProduccion
                     OBJ.LlenarFormulario(Me)
                 Else
                     'Cierra la operación.
-
+                    If Cierra Then
+                        If Not OBJ.GeneroTareas Then
+                            MsgBox("No hay tareas pendientes para el cliente seleccionado.", MsgBoxStyle.Information, frmName)
+                            InicializarFormulario()
+                            Exit Sub
+                        End If
+                    End If
                 End If
             End If
         Catch ex As Exception
@@ -196,6 +214,18 @@ Public Class frmModuloProduccion
                     If Me.OBJ.Get_Tareas_Transferencia(Cierre) Then
                         If Not Cierre Then
                             Me.OBJ.LlenarFormulario(Me)
+                        Else
+                            If MsgBox("¿Desea finalizar las transferencias?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, frmName) = MsgBoxResult.Yes Then
+                                Me.lblZonaPreparacion.Visible = True
+                                Me.txtZonaPreparacion.Visible = True
+                                Me.txtZonaPreparacion.Text = ""
+                                Me.txtZonaPreparacion.Focus()
+                                Me.txtUbicacionOrigen.Enabled = False
+                            Else
+                                Me.txtUbicacionOrigen.Text = ""
+                                Me.txtUbicacionOrigen.Focus()
+                                Exit Sub
+                            End If
                         End If
                     End If
                 End If
@@ -203,11 +233,21 @@ Public Class frmModuloProduccion
         End If
     End Sub
 
-    Private Sub txtPalletContenedora_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPalletContenedora.TextChanged
-
+    Private Sub btnSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalir.Click
+        Salir()
     End Sub
 
-    Private Sub txtUbicacionOrigen_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtUbicacionOrigen.TextChanged
-
+    Private Sub txtZonaPreparacion_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtZonaPreparacion.KeyUp
+        If e.KeyValue = 13 Then
+            If Me.txtZonaPreparacion.Text.Trim <> "" Then
+                If OBJ.FinalizarTransferencias(Me.txtZonaPreparacion.Text.Trim.ToUpper) Then
+                    Me.InicializarFormulario()
+                End If
+            Else
+                Me.txtZonaPreparacion.Text = ""
+                Me.txtZonaPreparacion.Focus()
+            End If
+        End If
     End Sub
+
 End Class

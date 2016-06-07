@@ -17,7 +17,18 @@ Public Class cModuloProduccion
     Private vNro_Pallet As String = ""
     Private vViaje_ID As String = ""
     Private vPosicion_Cod As String = ""
-    Private vTipoMovimiento As String
+    Private vTipoMovimiento As String = ""
+    Private vPosicionDestino As String = ""
+
+    Public ReadOnly Property GeneroTareas()
+        Get
+            If Me.vViaje_ID.Trim = "" Then
+                Return False
+            Else
+                Return True
+            End If
+        End Get
+    End Property
 
     Public ReadOnly Property UbicacionOrigen() As String
         Get
@@ -173,6 +184,7 @@ Public Class cModuloProduccion
                         Me.vNro_Pallet = DS.Tables(0).Rows(0)(4).ToString
                         Me.vViaje_ID = DS.Tables(0).Rows(0)(5).ToString
                         Me.vPosicion_Cod = DS.Tables(0).Rows(0)(6).ToString
+                        'Me.vPosicionDestino = DS.Tables(0).Rows(0)(7).ToString
                         Return True
                     Else
                         Cierre_Forzado = True
@@ -212,13 +224,17 @@ Public Class cModuloProduccion
             Else
                 Form.lblPalletContenedora.Text = "Nro.Cont. " & Me.vNro_Bulto & ":"
             End If
+            Form.lblUbicacionOrigen.Visible = False
+            Form.lblUbicacionOrigen.Text = "Ubicacion: " & Me.vPosicion_Cod
+            Form.txtUbicacionOrigen.Text = ""
+            Form.txtUbicacionOrigen.Visible = False
+
             Form.lblPalletContenedora.Visible = True
             Form.txtPalletContenedora.Visible = True
+            Form.txtPalletContenedora.Enabled = True
             Form.txtPalletContenedora.Text = ""
             Form.txtPalletContenedora.Focus()
 
-            Form.lblUbicacionOrigen.Text = "Ubicacion: " & Me.vPosicion_Cod
-            Form.txtUbicacionOrigen.Text = ""
 
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, clsName)
@@ -287,4 +303,129 @@ Public Class cModuloProduccion
             DS = Nothing
         End Try
     End Function
+
+    Public Function CancelarMovimientos() As Boolean
+        Dim DA As SqlDataAdapter, CMD As SqlCommand, PA As SqlParameter
+        Try
+            If VerifyConnection(Conn) Then
+                CMD = Conn.CreateCommand
+                CMD.CommandType = CommandType.StoredProcedure
+                CMD.CommandText = "[dbo].[MOD_PRODUCCION_DEL_TAREAS]"
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@TIPO_OPERACION", SqlDbType.VarChar, 1)
+                PA.Value = Me.TipoMovimiento
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@CODIGO_VIAJE", SqlDbType.VarChar, 100)
+                PA.Value = Me.vViaje_ID
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@USUARIO_ID", SqlDbType.VarChar, 100)
+                PA.Value = Me.Usuario
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+                '-------------------------------------------------------------
+                CMD.ExecuteNonQuery()
+                '-------------------------------------------------------------
+            Else : MsgBox(Me.SQLConErr, MsgBoxStyle.Exclamation, clsName)
+                Return False
+            End If
+            Return True
+        Catch SQLEx As SqlException
+            MsgBox(SQLEx.Message, MsgBoxStyle.Critical, clsName)
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, clsName)
+        Finally
+            DA = Nothing
+            CMD = Nothing
+            PA = Nothing
+        End Try
+    End Function
+
+    Public Function EliminarMovimientos() As Boolean
+        Dim DA As SqlDataAdapter, CMD As SqlCommand, PA As SqlParameter
+        Try
+            If VerifyConnection(Conn) Then
+                CMD = Conn.CreateCommand
+                CMD.CommandType = CommandType.StoredProcedure
+                CMD.CommandText = "[dbo].[MOD_PRODUCCION_DEL_TAREAS]"
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@TIPO_OPERACION", SqlDbType.VarChar, 1)
+                PA.Value = Me.TipoMovimiento
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@CODIGO_VIAJE", SqlDbType.VarChar, 100)
+                PA.Value = Me.vViaje_ID
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@USUARIO_ID", SqlDbType.VarChar, 100)
+                PA.Value = Me.Usuario
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+                '-------------------------------------------------------------
+                CMD.ExecuteNonQuery()
+                '-------------------------------------------------------------
+            Else : MsgBox(Me.SQLConErr, MsgBoxStyle.Exclamation, clsName)
+                Return False
+            End If
+            Return True
+        Catch SQLEx As SqlException
+            MsgBox(SQLEx.Message, MsgBoxStyle.Critical, clsName)
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, clsName)
+        Finally
+            DA = Nothing
+            CMD = Nothing
+            PA = Nothing
+        End Try
+    End Function
+
+    Public Function FinalizarTransferencias(ByVal Destino As String) As Boolean
+        Dim DA As SqlDataAdapter, CMD As SqlCommand, PA As SqlParameter
+        Try
+            If VerifyConnection(SQLc) Then
+                'Realizo las Transferencias de la tabla 
+                CMD = SQLc.CreateCommand
+                CMD.CommandText = "TRANSFERENCIA_PREPICKING"
+                CMD.CommandType = CommandType.StoredProcedure
+                CMD.Connection = SQLc
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@UBICACION_DESTINO", SqlDbType.VarChar, 45)
+                PA.Value = Destino
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@VIAJE_ID", SqlDbType.VarChar, 50)
+                PA.Value = Me.vViaje_ID
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@TIPO", SqlDbType.Int)
+                PA.Value = Me.vTipoMovimiento
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+                '-------------------------------------------------------------
+                CMD.ExecuteNonQuery()
+                '-------------------------------------------------------------
+                MsgBox("La transferencia se realizo correctamente ", MsgBoxStyle.OkOnly, clsName)
+
+            Else : MsgBox(SQLConErr, MsgBoxStyle.Critical, clsName)
+                Return False
+            End If
+            Return True
+        Catch SQLEx As SqlException
+            MsgBox(SQLEx.Message, MsgBoxStyle.Critical, clsName)
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, clsName)
+        Finally
+            DA = Nothing
+            CMD = Nothing
+            PA = Nothing
+        End Try
+    End Function
+
 End Class

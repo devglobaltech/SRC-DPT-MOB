@@ -22,9 +22,8 @@ Partial Public Class frmModuloProduccion
         Me.lblTitulo = New System.Windows.Forms.Label
         Me.cmbClientes = New System.Windows.Forms.ComboBox
         Me.btnComenzar = New System.Windows.Forms.Button
-        Me.Button2 = New System.Windows.Forms.Button
-        Me.Button3 = New System.Windows.Forms.Button
-        Me.Button4 = New System.Windows.Forms.Button
+        Me.btnCancelar = New System.Windows.Forms.Button
+        Me.btnSalir = New System.Windows.Forms.Button
         Me.lblOperacion = New System.Windows.Forms.Label
         Me.lblProducto = New System.Windows.Forms.Label
         Me.txtProducto = New System.Windows.Forms.TextBox
@@ -60,29 +59,21 @@ Partial Public Class frmModuloProduccion
         Me.btnComenzar.TabIndex = 2
         Me.btnComenzar.Text = "F1) Comenzar"
         '
-        'Button2
+        'btnCancelar
         '
-        Me.Button2.Location = New System.Drawing.Point(126, 249)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(114, 20)
-        Me.Button2.TabIndex = 3
-        Me.Button2.Text = "F2) Cancelar"
+        Me.btnCancelar.Location = New System.Drawing.Point(126, 249)
+        Me.btnCancelar.Name = "btnCancelar"
+        Me.btnCancelar.Size = New System.Drawing.Size(114, 20)
+        Me.btnCancelar.TabIndex = 3
+        Me.btnCancelar.Text = "F2) Cancelar"
         '
-        'Button3
+        'btnSalir
         '
-        Me.Button3.Location = New System.Drawing.Point(126, 271)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(114, 20)
-        Me.Button3.TabIndex = 5
-        Me.Button3.Text = "F4) Salir"
-        '
-        'Button4
-        '
-        Me.Button4.Location = New System.Drawing.Point(0, 271)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(120, 20)
-        Me.Button4.TabIndex = 4
-        Me.Button4.Text = "F3) Salir"
+        Me.btnSalir.Location = New System.Drawing.Point(0, 271)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(120, 20)
+        Me.btnSalir.TabIndex = 4
+        Me.btnSalir.Text = "F3) Salir"
         '
         'lblOperacion
         '
@@ -177,9 +168,8 @@ Partial Public Class frmModuloProduccion
         Me.Controls.Add(Me.txtProducto)
         Me.Controls.Add(Me.lblProducto)
         Me.Controls.Add(Me.lblOperacion)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.btnSalir)
+        Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnComenzar)
         Me.Controls.Add(Me.lblTitulo)
         Me.Controls.Add(Me.cmbClientes)
@@ -192,9 +182,8 @@ Partial Public Class frmModuloProduccion
     Friend WithEvents lblTitulo As System.Windows.Forms.Label
     Friend WithEvents cmbClientes As System.Windows.Forms.ComboBox
     Friend WithEvents btnComenzar As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents btnCancelar As System.Windows.Forms.Button
+    Friend WithEvents btnSalir As System.Windows.Forms.Button
     Friend WithEvents lblOperacion As System.Windows.Forms.Label
     Friend WithEvents lblProducto As System.Windows.Forms.Label
     Friend WithEvents txtProducto As System.Windows.Forms.TextBox
