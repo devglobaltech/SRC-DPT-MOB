@@ -78,14 +78,14 @@ Partial Public Class frmModuloProduccion
         'lblOperacion
         '
         Me.lblOperacion.BackColor = System.Drawing.SystemColors.Control
-        Me.lblOperacion.Location = New System.Drawing.Point(0, 48)
+        Me.lblOperacion.Location = New System.Drawing.Point(0, 47)
         Me.lblOperacion.Name = "lblOperacion"
         Me.lblOperacion.Size = New System.Drawing.Size(240, 20)
         Me.lblOperacion.Text = "Operación: "
         '
         'lblProducto
         '
-        Me.lblProducto.Location = New System.Drawing.Point(0, 71)
+        Me.lblProducto.Location = New System.Drawing.Point(0, 69)
         Me.lblProducto.Name = "lblProducto"
         Me.lblProducto.Size = New System.Drawing.Size(94, 21)
         Me.lblProducto.Text = "Cod. Producto:"
@@ -93,7 +93,7 @@ Partial Public Class frmModuloProduccion
         'txtProducto
         '
         Me.txtProducto.Enabled = False
-        Me.txtProducto.Location = New System.Drawing.Point(88, 70)
+        Me.txtProducto.Location = New System.Drawing.Point(88, 69)
         Me.txtProducto.Name = "txtProducto"
         Me.txtProducto.Size = New System.Drawing.Size(152, 21)
         Me.txtProducto.TabIndex = 8
@@ -101,7 +101,7 @@ Partial Public Class frmModuloProduccion
         'lblDescripcion
         '
         Me.lblDescripcion.BackColor = System.Drawing.SystemColors.Control
-        Me.lblDescripcion.Location = New System.Drawing.Point(0, 93)
+        Me.lblDescripcion.Location = New System.Drawing.Point(0, 92)
         Me.lblDescripcion.Name = "lblDescripcion"
         Me.lblDescripcion.Size = New System.Drawing.Size(240, 21)
         Me.lblDescripcion.Text = "Descripcion del Producto"
@@ -109,14 +109,14 @@ Partial Public Class frmModuloProduccion
         '
         'lblPalletContenedora
         '
-        Me.lblPalletContenedora.Location = New System.Drawing.Point(0, 116)
+        Me.lblPalletContenedora.Location = New System.Drawing.Point(0, 114)
         Me.lblPalletContenedora.Name = "lblPalletContenedora"
         Me.lblPalletContenedora.Size = New System.Drawing.Size(120, 20)
         Me.lblPalletContenedora.Text = "Pallet/Contenedora:"
         '
         'txtPalletContenedora
         '
-        Me.txtPalletContenedora.Location = New System.Drawing.Point(116, 116)
+        Me.txtPalletContenedora.Location = New System.Drawing.Point(116, 114)
         Me.txtPalletContenedora.Name = "txtPalletContenedora"
         Me.txtPalletContenedora.Size = New System.Drawing.Size(124, 21)
         Me.txtPalletContenedora.TabIndex = 11
@@ -124,21 +124,21 @@ Partial Public Class frmModuloProduccion
         'lblUbicacionOrigen
         '
         Me.lblUbicacionOrigen.BackColor = System.Drawing.SystemColors.Control
-        Me.lblUbicacionOrigen.Location = New System.Drawing.Point(0, 140)
+        Me.lblUbicacionOrigen.Location = New System.Drawing.Point(0, 137)
         Me.lblUbicacionOrigen.Name = "lblUbicacionOrigen"
         Me.lblUbicacionOrigen.Size = New System.Drawing.Size(240, 20)
         Me.lblUbicacionOrigen.Text = "Ubicacion: DP1-1-1-50"
         '
         'txtUbicacionOrigen
         '
-        Me.txtUbicacionOrigen.Location = New System.Drawing.Point(0, 162)
+        Me.txtUbicacionOrigen.Location = New System.Drawing.Point(0, 159)
         Me.txtUbicacionOrigen.Name = "txtUbicacionOrigen"
         Me.txtUbicacionOrigen.Size = New System.Drawing.Size(240, 21)
         Me.txtUbicacionOrigen.TabIndex = 13
         '
         'txtZonaPreparacion
         '
-        Me.txtZonaPreparacion.Location = New System.Drawing.Point(0, 209)
+        Me.txtZonaPreparacion.Location = New System.Drawing.Point(0, 211)
         Me.txtZonaPreparacion.Name = "txtZonaPreparacion"
         Me.txtZonaPreparacion.Size = New System.Drawing.Size(240, 21)
         Me.txtZonaPreparacion.TabIndex = 15
@@ -146,7 +146,7 @@ Partial Public Class frmModuloProduccion
         'lblZonaPreparacion
         '
         Me.lblZonaPreparacion.BackColor = System.Drawing.SystemColors.Control
-        Me.lblZonaPreparacion.Location = New System.Drawing.Point(0, 186)
+        Me.lblZonaPreparacion.Location = New System.Drawing.Point(0, 189)
         Me.lblZonaPreparacion.Name = "lblZonaPreparacion"
         Me.lblZonaPreparacion.Size = New System.Drawing.Size(240, 20)
         Me.lblZonaPreparacion.Text = "Zona de Preparación: AFG"

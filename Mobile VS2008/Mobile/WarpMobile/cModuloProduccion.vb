@@ -228,6 +228,7 @@ Public Class cModuloProduccion
             Form.lblUbicacionOrigen.Text = "Ubicacion: " & Me.vPosicion_Cod
             Form.txtUbicacionOrigen.Text = ""
             Form.txtUbicacionOrigen.Visible = False
+            Form.lblZonaPreparacion.Text = "Zona de Preparación: " & Me.vPosicionDestino
 
             Form.lblPalletContenedora.Visible = True
             Form.txtPalletContenedora.Visible = True
