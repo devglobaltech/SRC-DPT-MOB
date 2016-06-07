@@ -7,6 +7,15 @@ Public Class frmModuloProduccion
     Private Const frmName As String = "Modulo de ensamble"
     Private OperacionEnCurso As Boolean = False
 
+    Public Property TipoMovimiento() As String
+        Get
+            Return OBJ.TipoMovimiento
+        End Get
+        Set(ByVal value As String)
+            OBJ.TipoMovimiento = value
+        End Set
+    End Property
+
     Private Sub frmModuloProduccion_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyUp
         Select Case e.KeyCode
             Case Keys.F1
@@ -16,8 +25,12 @@ Public Class frmModuloProduccion
             Case Keys.F3
 
             Case Keys.F4
-
+                Salir()
         End Select
+    End Sub
+
+    Private Sub Salir()
+        Me.Close()
     End Sub
 
     Private Sub frmModuloProduccion_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -56,7 +69,7 @@ Public Class frmModuloProduccion
             Next
             Me.cmbClientes.DataSource = Nothing
             If Not OBJ.GetClientesByUser(Me.cmbClientes) Then Exit Try
-
+            Me.cmbClientes.Visible = False
         Catch ex As Exception
             MsgBox(ex, MsgBoxStyle.Critical, frmName)
         End Try
@@ -68,6 +81,8 @@ Public Class frmModuloProduccion
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
         OBJ = New cModuloProduccion
         OBJ.Conexion = SQLc
+        OBJ.Usuario = vUsr.CodUsuario
+
     End Sub
 
     Protected Overrides Sub Finalize()
@@ -79,8 +94,24 @@ Public Class frmModuloProduccion
         If e.KeyValue = 13 Then
             OBJ.Cliente = Trim(Me.cmbClientes.SelectedValue)
             Me.cmbClientes.Enabled = False
-            Me.Close()
+            BuscarTarea()
         End If
+    End Sub
+
+    Private Sub BuscarTarea()
+        Dim Cierra As Boolean = False
+        Try
+            If OBJ.Get_Tareas_Transferencia(Cierra) Then
+                If Not Cierra Then
+                    OBJ.LlenarFormulario(Me)
+                Else
+                    'Cierra la operación.
+
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, frmName)
+        End Try
     End Sub
 
     Private Sub btnComenzar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnComenzar.Click
@@ -91,11 +122,92 @@ Public Class frmModuloProduccion
         Try
             Me.lblTitulo.Visible = True
             Me.cmbClientes.Visible = True
+            Me.OBJ.GetClientesByUser(Me.cmbClientes)
             Me.cmbClientes.Focus()
+
             OperacionEnCurso = True
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, frmName)
         End Try
     End Sub
 
+    Private Sub frmModuloProduccion_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
+        If (e.KeyCode = System.Windows.Forms.Keys.Up) Then
+            'Subir oscilador
+            'Subir
+        End If
+        If (e.KeyCode = System.Windows.Forms.Keys.Down) Then
+            'Bajar oscilador
+            'Bajar
+        End If
+        If (e.KeyCode = System.Windows.Forms.Keys.Left) Then
+            'Izquierda
+        End If
+        If (e.KeyCode = System.Windows.Forms.Keys.Right) Then
+            'Derecha
+        End If
+        If (e.KeyCode = System.Windows.Forms.Keys.Enter) Then
+            'Entrar
+        End If
+
+    End Sub
+
+    Private Sub cmbClientes_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbClientes.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub txtPalletContenedora_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtPalletContenedora.KeyUp
+        If e.KeyValue = 13 Then
+            If Me.txtPalletContenedora.Text.Trim <> "" Then
+                If OBJ.TipoMovimiento = "1" Then
+                    If Me.txtPalletContenedora.Text.Trim <> Me.OBJ.Nro_Bulto Then
+                        MsgBox("El numero de contenedora escaneado no coincide con el solicitado.", MsgBoxStyle.Information, frmName)
+                        Me.txtPalletContenedora.Text = ""
+                        Return
+                    End If
+                ElseIf OBJ.TipoMovimiento = "2" Then
+                    If Me.txtPalletContenedora.Text.Trim <> Me.OBJ.Nro_pallet Then
+                        MsgBox("El numero de pallet escaneado no coincide con el solicitado.", MsgBoxStyle.Information, frmName)
+                        Me.txtPalletContenedora.Text = ""
+                        Return
+                    End If
+                End If
+                Me.txtPalletContenedora.Enabled = False
+                Me.lblUbicacionOrigen.Visible = True
+                Me.txtUbicacionOrigen.Visible = True
+                Me.txtUbicacionOrigen.Focus()
+            End If
+        End If
+    End Sub
+
+    Private Sub txtUbicacionOrigen_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtUbicacionOrigen.KeyUp
+        Dim Cierre As Boolean = False
+
+        If e.KeyValue = 13 Then
+            If Me.txtUbicacionOrigen.Text.Trim <> "" Then
+                If Me.txtUbicacionOrigen.Text.Trim <> Me.OBJ.UbicacionOrigen Then
+                    MsgBox("La ubicacion escaneada no coincide con la solicitada.", MsgBoxStyle.Information, frmName)
+                    Me.txtUbicacionOrigen.Text = ""
+                    Return
+                Else
+                    'Todo Ok, asi que tendria que guardar el registro.
+                    'y recuperar la siguiente tarea.
+                    Me.OBJ.InsertarMovimiento()
+                    If Me.OBJ.Get_Tareas_Transferencia(Cierre) Then
+                        If Not Cierre Then
+                            Me.OBJ.LlenarFormulario(Me)
+                        End If
+                    End If
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub txtPalletContenedora_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPalletContenedora.TextChanged
+
+    End Sub
+
+    Private Sub txtUbicacionOrigen_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtUbicacionOrigen.TextChanged
+
+    End Sub
 End Class

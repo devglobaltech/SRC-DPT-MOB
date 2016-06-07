@@ -9,8 +9,42 @@ Public Class cModuloProduccion
 
     Private Conn As SqlConnection
     Private ClienteID As String = ""
-    Private DocExt As String = ""
     Private User As String = ""
+    Private vCliente_ID As String = ""
+    Private vProducto_ID As String = ""
+    Private vProducto_DESC As String = ""
+    Private vNro_Bulto As String = ""
+    Private vNro_Pallet As String = ""
+    Private vViaje_ID As String = ""
+    Private vPosicion_Cod As String = ""
+    Private vTipoMovimiento As String
+
+    Public ReadOnly Property UbicacionOrigen() As String
+        Get
+            Return Me.vPosicion_Cod
+        End Get
+    End Property
+
+    Public ReadOnly Property Nro_Bulto() As String
+        Get
+            Return vNro_Bulto
+        End Get
+    End Property
+
+    Public ReadOnly Property Nro_pallet() As String
+        Get
+            Return vNro_Pallet
+        End Get
+    End Property
+
+    Public Property TipoMovimiento() As String
+        Get
+            Return Me.vTipoMovimiento
+        End Get
+        Set(ByVal value As String)
+            Me.vTipoMovimiento = value
+        End Set
+    End Property
 
     Public Property Usuario() As String
         Get
@@ -18,15 +52,6 @@ Public Class cModuloProduccion
         End Get
         Set(ByVal value As String)
             User = value
-        End Set
-    End Property
-
-    Public Property DocumentoExterno() As String
-        Get
-            Return DocExt
-        End Get
-        Set(ByVal value As String)
-            DocExt = value
         End Set
     End Property
 
@@ -59,6 +84,7 @@ Public Class cModuloProduccion
 
         Try
             If VerifyConnection(Conn) Then
+                CMB.DataSource = Nothing
                 xCmd = Conn.CreateCommand
                 Da = New SqlDataAdapter(xCmd)
                 xCmd.CommandText = "DBO.GET_CLIENTES_BY_USER"
@@ -103,4 +129,162 @@ Public Class cModuloProduccion
         End Try
     End Function
 
+    Public Function Get_Tareas_Transferencia(ByRef Cierre_Forzado As Boolean) As Boolean
+        Dim DA As SqlDataAdapter, CMD As SqlCommand, PA As SqlParameter, DS As New DataSet
+        Try
+            If VerifyConnection(Conn) Then
+                '-------------------------------------------------------------
+                CMD = Conn.CreateCommand
+                DA = New SqlDataAdapter(CMD)
+                CMD.CommandType = CommandType.StoredProcedure
+                CMD.CommandText = "[dbo].[MOD_PRODUCCION_GET_TAREAS]"
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@TIPO_OPERACION", SqlDbType.VarChar, 1)
+                PA.Value = Me.TipoMovimiento
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@CODIGO_VIAJE", SqlDbType.VarChar, 100)
+                If Trim(Me.vViaje_ID) = "" Then
+                    PA.Value = DBNull.Value
+                Else
+                    PA.Value = Me.vViaje_ID
+                End If
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@USUARIO_ID", SqlDbType.VarChar, 100)
+                If Trim(Me.Usuario) = "" Then
+                    PA.Value = DBNull.Value
+                Else
+                    PA.Value = Me.Usuario
+                End If
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+                '-------------------------------------------------------------
+                DA.Fill(DS, "REG")
+                If DS.Tables.Count > 0 Then
+                    If DS.Tables(0).Rows.Count > 0 Then
+                        Cierre_Forzado = False
+                        Me.vCliente_ID = DS.Tables(0).Rows(0)(0).ToString
+                        Me.vProducto_ID = DS.Tables(0).Rows(0)(1).ToString
+                        Me.vProducto_DESC = DS.Tables(0).Rows(0)(2).ToString
+                        Me.vNro_Bulto = DS.Tables(0).Rows(0)(3).ToString
+                        Me.vNro_Pallet = DS.Tables(0).Rows(0)(4).ToString
+                        Me.vViaje_ID = DS.Tables(0).Rows(0)(5).ToString
+                        Me.vPosicion_Cod = DS.Tables(0).Rows(0)(6).ToString
+                        Return True
+                    Else
+                        Cierre_Forzado = True
+                    End If
+                Else
+                    Cierre_Forzado = True
+                End If
+            Else : MsgBox(SQLConErr, MsgBoxStyle.Exclamation, clsName)
+                Return False
+            End If
+            Return True
+        Catch SQLEx As SqlException
+            MsgBox(SQLEx.Message, MsgBoxStyle.Critical, clsName)
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, clsName)
+        Finally
+            DA = Nothing
+            CMD = Nothing
+            PA = Nothing
+            DS = Nothing
+        End Try
+    End Function
+
+    Public Function LlenarFormulario(ByRef Form As frmModuloProduccion)
+        Try
+            Form.cmbClientes.Enabled = False
+            Form.lblOperacion.Text = "Operacion: " & Me.vViaje_ID
+            Form.lblOperacion.Visible = True
+            Form.lblProducto.Visible = True
+            Form.lblDescripcion.Text = Me.vProducto_DESC
+            Form.lblDescripcion.Visible = True
+            Form.txtProducto.Text = Me.vProducto_ID
+            Form.txtProducto.Enabled = False
+            Form.txtProducto.Visible = True
+            If Me.TipoMovimiento = "2" Then
+                Form.lblPalletContenedora.Text = "Nro.Pallet " & Me.vNro_Pallet & ":"
+            Else
+                Form.lblPalletContenedora.Text = "Nro.Cont. " & Me.vNro_Bulto & ":"
+            End If
+            Form.lblPalletContenedora.Visible = True
+            Form.txtPalletContenedora.Visible = True
+            Form.txtPalletContenedora.Text = ""
+            Form.txtPalletContenedora.Focus()
+
+            Form.lblUbicacionOrigen.Text = "Ubicacion: " & Me.vPosicion_Cod
+            Form.txtUbicacionOrigen.Text = ""
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, clsName)
+        End Try
+    End Function
+
+    Public Function InsertarMovimiento() As Boolean
+        Dim DA As SqlDataAdapter, CMD As SqlCommand, PA As SqlParameter, DS As New DataSet
+        Try
+            If VerifyConnection(Conn) Then
+                '-------------------------------------------------------------
+                CMD = Conn.CreateCommand
+                DA = New SqlDataAdapter(CMD)
+                CMD.CommandType = CommandType.StoredProcedure
+                CMD.CommandText = "[dbo].[MOB_PRODUCCION_INSERT_MOVIMIENTOS]"
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@CLIENTE_ID", SqlDbType.VarChar, 15)
+                PA.Value = Me.vCliente_ID
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@VIAJE_ID", SqlDbType.VarChar, 100)
+                PA.Value = Me.vViaje_ID
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@PRODUCTO_ID", SqlDbType.VarChar, 100)
+                PA.Value = Me.vProducto_ID
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@NRO_BULTO", SqlDbType.VarChar, 100)
+                PA.Value = Me.vNro_Bulto
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@NRO_PALLET", SqlDbType.VarChar, 100)
+                PA.Value = Me.vNro_Pallet
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@POSICION", SqlDbType.VarChar, 100)
+                PA.Value = Me.vPosicion_Cod
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@TIPO_MOVIMIENTO", SqlDbType.VarChar, 1)
+                PA.Value = Me.TipoMovimiento
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+
+                CMD.ExecuteNonQuery()
+
+            Else : MsgBox(SQLConErr, MsgBoxStyle.Exclamation, clsName)
+                Return False
+            End If
+            Return True
+        Catch SQLEx As SqlException
+            MsgBox(SQLEx.Message, MsgBoxStyle.Critical, clsName)
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, clsName)
+        Finally
+            DA = Nothing
+            CMD = Nothing
+            PA = Nothing
+            DS = Nothing
+        End Try
+    End Function
 End Class

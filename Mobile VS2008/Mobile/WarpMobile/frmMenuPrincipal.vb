@@ -385,6 +385,18 @@ Public Class frmMenuPrincipal
                         Dim RG As New frmRecepcionGuardado
                         RG.ShowDialog()
                         RG.Dispose()
+                    Case "35" 'MODULO DE PRODUCCION.
+                        Dim Sel As Integer = 0
+                        Dim fselMP As New frmTransfPickingSelector
+                        Dim frmMP As New frmModuloProduccion
+                        fselMP.ShowDialog()
+                        If fselMP.Cancelo = True Then
+                            Exit Try
+                        End If
+                        Sel = fselMP.TSeleccion
+                        frmMP.TipoMovimiento = Sel
+                        frmMP.ShowDialog()
+                        fselMP.Dispose()
                     Case "999" 'SALIR
                         Dim Msg As Object
                         Msg = MsgBox("Desea Cerrar WarpMobile? ", MsgBoxStyle.YesNo)
