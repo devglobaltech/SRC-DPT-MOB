@@ -250,4 +250,7 @@ Public Class frmModuloProduccion
         End If
     End Sub
 
+    Private Sub txtZonaPreparacion_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtZonaPreparacion.TextChanged
+
+    End Sub
 End Class

@@ -184,7 +184,7 @@ Public Class cModuloProduccion
                         Me.vNro_Pallet = DS.Tables(0).Rows(0)(4).ToString
                         Me.vViaje_ID = DS.Tables(0).Rows(0)(5).ToString
                         Me.vPosicion_Cod = DS.Tables(0).Rows(0)(6).ToString
-                        'Me.vPosicionDestino = DS.Tables(0).Rows(0)(7).ToString
+                        Me.vPosicionDestino = DS.Tables(0).Rows(0)(7).ToString
                         Return True
                     Else
                         Cierre_Forzado = True
