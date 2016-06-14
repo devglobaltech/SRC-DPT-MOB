@@ -21,15 +21,16 @@ Public Class frmModuloProduccion
             Case Keys.F1
                 Me.Comenzar()
             Case Keys.F2
-
+                Cancelar()
             Case Keys.F3
                 Salir()
         End Select
     End Sub
 
     Private Sub Salir()
+        Dim strSalir As String = "¿Desea cancelar la operacion en curso?"
         If Me.OperacionEnCurso Then
-            If MsgBox("¿Desea cancelar la operacion en curso?", MsgBoxStyle.YesNo, frmName) = MsgBoxResult.Yes Then
+            If MsgBox(strSalir, MsgBoxStyle.YesNo, frmName) = MsgBoxResult.Yes Then
                 OBJ.CancelarMovimientos()
                 Me.Close()
             End If
@@ -82,6 +83,7 @@ Public Class frmModuloProduccion
             Me.cmbClientes.DataSource = Nothing
             If Not OBJ.GetClientesByUser(Me.cmbClientes) Then Exit Try
             Me.cmbClientes.Visible = False
+            OperacionEnCurso = False
         Catch ex As Exception
             MsgBox(ex, MsgBoxStyle.Critical, frmName)
         End Try
@@ -111,16 +113,34 @@ Public Class frmModuloProduccion
     End Sub
 
     Private Sub BuscarTarea()
-        Dim Cierra As Boolean = False
+        '----------------------------------------------------------------------------------
+        Dim Cierra As Boolean = False, Pendientes As Boolean = False, _
+            SinTareas As String = "No hay tareas pendientes para el cliente seleccionado."
+        '----------------------------------------------------------------------------------
         Try
+            '-------------------------------------------------------
+            'Si tiene una tarea sin confirmar, la recupera.
+            '-------------------------------------------------------
+            If OBJ.Get_Tareas_Transferencia_Pendiente(Pendientes) Then
+                If Pendientes Then
+                    'Lleno el formulario con los pendientes.
+                    OBJ.LlenarFormularioPendientes(Me)
+                    Exit Sub
+                End If
+            End If
+            '-------------------------------------------------------
+            'Como no hubo pendiente sin confirmar, genero una nueva.
+            '-------------------------------------------------------
             If OBJ.Get_Tareas_Transferencia(Cierra) Then
                 If Not Cierra Then
                     OBJ.LlenarFormulario(Me)
                 Else
+                    '-------------------------------------------------------
                     'Cierra la operación.
+                    '-------------------------------------------------------
                     If Cierra Then
                         If Not OBJ.GeneroTareas Then
-                            MsgBox("No hay tareas pendientes para el cliente seleccionado.", MsgBoxStyle.Information, frmName)
+                            MsgBox(SinTareas, MsgBoxStyle.Information, frmName)
                             InicializarFormulario()
                             Exit Sub
                         End If
@@ -137,37 +157,27 @@ Public Class frmModuloProduccion
     End Sub
 
     Private Sub Comenzar()
+        Dim MsgEnCurso As String = "Hay una operacion en curso."
         Try
-            Me.lblTitulo.Visible = True
-            Me.cmbClientes.Visible = True
-            Me.OBJ.GetClientesByUser(Me.cmbClientes)
-            Me.cmbClientes.Focus()
-
-            OperacionEnCurso = True
+            If Not Me.OperacionEnCurso Then
+                Me.lblTitulo.Visible = True
+                Me.cmbClientes.Visible = True
+                Me.OBJ.GetClientesByUser(Me.cmbClientes)
+                Me.cmbClientes.Focus()
+                OperacionEnCurso = True
+            Else
+                MsgBox(MsgEnCurso, MsgBoxStyle.Information, frmName)
+                If Me.txtPalletContenedora.Visible And Me.txtPalletContenedora.Enabled Then
+                    Me.txtPalletContenedora.Focus()
+                ElseIf Me.txtUbicacionOrigen.Visible And Me.txtUbicacionOrigen.Enabled Then
+                    Me.txtUbicacionOrigen.Focus()
+                ElseIf Me.txtZonaPreparacion.Visible And Me.txtZonaPreparacion.Enabled Then
+                    Me.txtUbicacionOrigen.Focus()
+                End If
+            End If
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, frmName)
         End Try
-    End Sub
-
-    Private Sub frmModuloProduccion_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
-        If (e.KeyCode = System.Windows.Forms.Keys.Up) Then
-            'Subir oscilador
-            'Subir
-        End If
-        If (e.KeyCode = System.Windows.Forms.Keys.Down) Then
-            'Bajar oscilador
-            'Bajar
-        End If
-        If (e.KeyCode = System.Windows.Forms.Keys.Left) Then
-            'Izquierda
-        End If
-        If (e.KeyCode = System.Windows.Forms.Keys.Right) Then
-            'Derecha
-        End If
-        If (e.KeyCode = System.Windows.Forms.Keys.Enter) Then
-            'Entrar
-        End If
-
     End Sub
 
     Private Sub cmbClientes_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbClientes.SelectedIndexChanged
@@ -175,17 +185,21 @@ Public Class frmModuloProduccion
     End Sub
 
     Private Sub txtPalletContenedora_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtPalletContenedora.KeyUp
+        '----------------------------------------------------------------------------------------------
+        Dim ContenedorNOK As String = "El numero de contenedora escaneado no coincide con el solicitado.", _
+            PalletNOK As String = "El numero de pallet escaneado no coincide con el solicitado."
+        '----------------------------------------------------------------------------------------------
         If e.KeyValue = 13 Then
             If Me.txtPalletContenedora.Text.Trim <> "" Then
                 If OBJ.TipoMovimiento = "1" Then
                     If Me.txtPalletContenedora.Text.Trim <> Me.OBJ.Nro_Bulto Then
-                        MsgBox("El numero de contenedora escaneado no coincide con el solicitado.", MsgBoxStyle.Information, frmName)
+                        MsgBox(ContenedorNOK, MsgBoxStyle.Information, frmName)
                         Me.txtPalletContenedora.Text = ""
                         Return
                     End If
                 ElseIf OBJ.TipoMovimiento = "2" Then
                     If Me.txtPalletContenedora.Text.Trim <> Me.OBJ.Nro_pallet Then
-                        MsgBox("El numero de pallet escaneado no coincide con el solicitado.", MsgBoxStyle.Information, frmName)
+                        MsgBox(PalletNOK, MsgBoxStyle.Information, frmName)
                         Me.txtPalletContenedora.Text = ""
                         Return
                     End If
@@ -199,35 +213,27 @@ Public Class frmModuloProduccion
     End Sub
 
     Private Sub txtUbicacionOrigen_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtUbicacionOrigen.KeyUp
-        Dim Cierre As Boolean = False
-
+        '----------------------------------------------------------------------------------
+        Dim Cierre As Boolean = False, _
+            UbicacionNOK As String = "La ubicacion escaneada no coincide con la solicitada."
+        '----------------------------------------------------------------------------------
         If e.KeyValue = 13 Then
             If Me.txtUbicacionOrigen.Text.Trim <> "" Then
                 If Me.txtUbicacionOrigen.Text.Trim <> Me.OBJ.UbicacionOrigen Then
-                    MsgBox("La ubicacion escaneada no coincide con la solicitada.", MsgBoxStyle.Information, frmName)
+                    MsgBox(UbicacionNOK, MsgBoxStyle.Information, frmName)
                     Me.txtUbicacionOrigen.Text = ""
                     Return
                 Else
+                    '-------------------------------------------------------
                     'Todo Ok, asi que tendria que guardar el registro.
                     'y recuperar la siguiente tarea.
+                    '-------------------------------------------------------
                     Me.OBJ.InsertarMovimiento()
-                    If Me.OBJ.Get_Tareas_Transferencia(Cierre) Then
-                        If Not Cierre Then
-                            Me.OBJ.LlenarFormulario(Me)
-                        Else
-                            If MsgBox("¿Desea finalizar las transferencias?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, frmName) = MsgBoxResult.Yes Then
-                                Me.lblZonaPreparacion.Visible = True
-                                Me.txtZonaPreparacion.Visible = True
-                                Me.txtZonaPreparacion.Text = ""
-                                Me.txtZonaPreparacion.Focus()
-                                Me.txtUbicacionOrigen.Enabled = False
-                            Else
-                                Me.txtUbicacionOrigen.Text = ""
-                                Me.txtUbicacionOrigen.Focus()
-                                Exit Sub
-                            End If
-                        End If
-                    End If
+                    Me.lblZonaPreparacion.Visible = True
+                    Me.txtZonaPreparacion.Visible = True
+                    Me.txtZonaPreparacion.Text = ""
+                    Me.txtZonaPreparacion.Focus()
+                    Me.txtUbicacionOrigen.Enabled = False
                 End If
             End If
         End If
@@ -238,19 +244,93 @@ Public Class frmModuloProduccion
     End Sub
 
     Private Sub txtZonaPreparacion_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtZonaPreparacion.KeyUp
+        '-------------------------------------------------------
+        'Declaracion de Variables.
+        '-------------------------------------------------------
+        Dim Msg As String = "La nave de preparacion es diferente a la nave configurada." & vbNewLine & "¿Desea continuar?"
+        Dim MsgNaveNOK As String = "La nave indicada no es una zona de preparación."
+        Dim MsgConfirmacionTransferencia As String = "El movimiento se realizo correctamente."
+        Dim Continuar As Boolean = False
+        '-------------------------------------------------------
         If e.KeyValue = 13 Then
-            If Me.txtZonaPreparacion.Text.Trim <> "" Then
-                If OBJ.FinalizarTransferencias(Me.txtZonaPreparacion.Text.Trim.ToUpper) Then
-                    Me.InicializarFormulario()
+
+            If Me.txtZonaPreparacion.Text.Trim = "" Then Exit Sub
+
+            If Me.txtZonaPreparacion.Text.Trim <> OBJ.NavePreparacion Then
+                If OBJ.EsNavePreparacion(Me.txtZonaPreparacion.Text.Trim.ToUpper, Continuar) Then
+                    If Continuar Then
+                        If MsgBox(Msg, MsgBoxStyle.Question + MsgBoxStyle.YesNo, frmName) = MsgBoxResult.No Then
+                            Me.txtZonaPreparacion.Text = ""
+                            Me.txtZonaPreparacion.Focus()
+                            Exit Sub
+                        End If
+                    Else
+                        MsgBox(MsgNaveNOK, MsgBoxStyle.Information, frmName)
+                        Me.txtZonaPreparacion.Text = ""
+                        Me.txtZonaPreparacion.Focus()
+                        Exit Sub
+                    End If
                 End If
-            Else
-                Me.txtZonaPreparacion.Text = ""
-                Me.txtZonaPreparacion.Focus()
+            End If
+            '-------------------------------------------------------
+            'Comienzo con la confirmacion de la tarea.
+            '-------------------------------------------------------
+            If OBJ.FinalizarTransferencias(Me.txtZonaPreparacion.Text.Trim.ToUpper) Then
+                MsgBox(MsgConfirmacionTransferencia, MsgBoxStyle.Information, frmName)
+                Me.ContinuarProceso()
             End If
         End If
     End Sub
 
-    Private Sub txtZonaPreparacion_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtZonaPreparacion.TextChanged
+    Private Function ContinuarProceso() As Boolean
+        '-------------------------------------------------------
+        'Declaracion de Variables.
+        '-------------------------------------------------------
+        Dim CierreForzado As Boolean = False, _
+            MovimientoOK As String = "Se completaron los movimientos de la operación "
+        '-------------------------------------------------------
+        Try
+            Me.lblZonaPreparacion.Visible = False
+            Me.txtZonaPreparacion.Text = ""
+            Me.txtZonaPreparacion.Visible = False
+            Me.txtUbicacionOrigen.Text = ""
+            Me.txtUbicacionOrigen.Enabled = True
+            Me.txtUbicacionOrigen.Visible = False
+            Me.txtPalletContenedora.Text = ""
+            Me.txtPalletContenedora.Enabled = True
+            Me.lblUbicacionOrigen.Visible = False
+            Me.lblUbicacionOrigen.Text = "Ubicacion: "
 
+            If OBJ.Get_Tareas_Transferencia(CierreForzado) Then
+                If Not CierreForzado Then
+                    OBJ.LlenarFormulario(Me)
+                Else
+                    MsgBox(MovimientoOK, MsgBoxStyle.Information, frmName)
+                    Me.InicializarFormulario()
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, frmName)
+        End Try
+    End Function
+
+    Private Sub Cancelar()
+        Dim CancelarTareas As String = "¿Desea cancelar la tarea en curso?"
+        Try
+            If OperacionEnCurso Then
+                If MsgBox(CancelarTareas, _
+                        MsgBoxStyle.Question + MsgBoxStyle.YesNo, frmName) = MsgBoxResult.Yes Then
+                    If OBJ.CancelarMovimientos Then
+                        Me.InicializarFormulario()
+                    End If
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, frmName)
+        End Try
+    End Sub
+
+    Private Sub btnCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancelar.Click
+        Cancelar()
     End Sub
 End Class

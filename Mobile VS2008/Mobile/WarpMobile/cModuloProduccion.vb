@@ -20,6 +20,13 @@ Public Class cModuloProduccion
     Private vTipoMovimiento As String = ""
     Private vPosicionDestino As String = ""
 
+    Public ReadOnly Property NavePreparacion() As String
+        Get
+            Return Me.vPosicionDestino
+        End Get
+    End Property
+
+
     Public ReadOnly Property GeneroTareas()
         Get
             If Me.vViaje_ID.Trim = "" Then
@@ -268,12 +275,20 @@ Public Class cModuloProduccion
                 PA = Nothing
                 '-------------------------------------------------------------
                 PA = New SqlParameter("@NRO_BULTO", SqlDbType.VarChar, 100)
-                PA.Value = Me.vNro_Bulto
+                If Me.vNro_Bulto.Trim = "" Then
+                    PA.Value = DBNull.Value
+                Else
+                    PA.Value = Me.vNro_Bulto
+                End If
                 CMD.Parameters.Add(PA)
                 PA = Nothing
                 '-------------------------------------------------------------
                 PA = New SqlParameter("@NRO_PALLET", SqlDbType.VarChar, 100)
-                PA.Value = Me.vNro_Pallet
+                If Me.vNro_Pallet = "" Then
+                    PA.Value = DBNull.Value
+                Else
+                    PA.Value = Me.vNro_Pallet
+                End If
                 CMD.Parameters.Add(PA)
                 PA = Nothing
                 '-------------------------------------------------------------
@@ -292,7 +307,7 @@ Public Class cModuloProduccion
             Else : MsgBox(SQLConErr, MsgBoxStyle.Exclamation, clsName)
                 Return False
             End If
-            Return True
+                Return True
         Catch SQLEx As SqlException
             MsgBox(SQLEx.Message, MsgBoxStyle.Critical, clsName)
         Catch ex As Exception
@@ -412,7 +427,6 @@ Public Class cModuloProduccion
                 '-------------------------------------------------------------
                 CMD.ExecuteNonQuery()
                 '-------------------------------------------------------------
-                MsgBox("La transferencia se realizo correctamente ", MsgBoxStyle.OkOnly, clsName)
 
             Else : MsgBox(SQLConErr, MsgBoxStyle.Critical, clsName)
                 Return False
@@ -429,4 +443,149 @@ Public Class cModuloProduccion
         End Try
     End Function
 
+    Public Function EsNavePreparacion(ByVal NaveCOD As String, ByRef Continua As Boolean) As Boolean
+        Dim DA As SqlDataAdapter, CMD As SqlCommand, PA As SqlParameter, xSQL As String = "", DS As New DataSet
+        Try
+            xSQL = "SELECT * FROM NAVE WHERE ISNULL(ZONA_PREPARACION,'0') ='1' AND NAVE_COD='" & NaveCOD & "'"
+            If VerifyConnection(SQLc) Then
+                'Realizo las Transferencias de la tabla 
+                CMD = SQLc.CreateCommand
+                CMD.CommandText = xSQL
+                CMD.CommandType = CommandType.Text
+                CMD.Connection = Me.Conexion
+
+                DA = New SqlDataAdapter(CMD)
+                Continua = False
+
+                DA.Fill(DS)
+                If DS.Tables.Count > 0 Then
+                    If DS.Tables(0).Rows.Count > 0 Then
+                        If DS.Tables(0).Rows(0)(0).ToString = "1" Then
+                            Continua = True
+                        End If
+                    End If
+                End If
+
+            Else : MsgBox(SQLConErr, MsgBoxStyle.Critical, clsName)
+                Return False
+            End If
+            Return True
+        Catch SQLEx As SqlException
+            MsgBox(SQLEx.Message, MsgBoxStyle.Critical, clsName)
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, clsName)
+        Finally
+            DS = Nothing
+            DA = Nothing
+            CMD = Nothing
+            PA = Nothing
+        End Try
+    End Function
+
+    Public Function Get_Tareas_Transferencia_Pendiente(ByRef TienePendientes As Boolean) As Boolean
+        Dim DA As SqlDataAdapter, CMD As SqlCommand, PA As SqlParameter, DS As New DataSet
+        Try
+            If VerifyConnection(Conn) Then
+                '-------------------------------------------------------------
+                CMD = Conn.CreateCommand
+                DA = New SqlDataAdapter(CMD)
+                CMD.CommandType = CommandType.StoredProcedure
+                CMD.CommandText = "[dbo].[MOD_PRODUCCION_GET_TAREAS_NO_CONFIRMADAS]"
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@PCLIENTE_ID", SqlDbType.VarChar, 15)
+                PA.Value = Me.ClienteID
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@PUSUARIO", SqlDbType.VarChar, 100)
+                If Trim(Me.Usuario) = "" Then
+                    PA.Value = DBNull.Value
+                Else
+                    PA.Value = Me.Usuario
+                End If
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+                '-------------------------------------------------------------
+                PA = New SqlParameter("@PTIPO", SqlDbType.VarChar, 1)
+                PA.Value = Me.TipoMovimiento
+                CMD.Parameters.Add(PA)
+                PA = Nothing
+                '-------------------------------------------------------------
+                DA.Fill(DS, "REG")
+                If DS.Tables.Count > 0 Then
+                    If DS.Tables(0).Rows.Count > 0 Then
+                        TienePendientes = True
+                        Me.vCliente_ID = DS.Tables(0).Rows(0)(0).ToString
+                        Me.vProducto_ID = DS.Tables(0).Rows(0)(1).ToString
+                        Me.vProducto_DESC = DS.Tables(0).Rows(0)(2).ToString
+                        Me.vNro_Bulto = DS.Tables(0).Rows(0)(3).ToString
+                        Me.vNro_Pallet = DS.Tables(0).Rows(0)(4).ToString
+                        Me.vViaje_ID = DS.Tables(0).Rows(0)(5).ToString
+                        Me.vPosicion_Cod = DS.Tables(0).Rows(0)(6).ToString
+                        Me.vPosicionDestino = DS.Tables(0).Rows(0)(7).ToString
+                        Return True
+                    Else
+                        TienePendientes = False
+                    End If
+                Else
+                    TienePendientes = False
+                End If
+            Else : MsgBox(SQLConErr, MsgBoxStyle.Exclamation, clsName)
+                Return False
+            End If
+            Return True
+        Catch SQLEx As SqlException
+            MsgBox(SQLEx.Message, MsgBoxStyle.Critical, clsName)
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, clsName)
+        Finally
+            DA = Nothing
+            CMD = Nothing
+            PA = Nothing
+            DS = Nothing
+        End Try
+    End Function
+
+    Public Function LlenarFormularioPendientes(ByRef Form As frmModuloProduccion)
+        Try
+            Form.cmbClientes.Enabled = False
+            Form.lblOperacion.Text = "Operacion: " & Me.vViaje_ID
+            Form.lblOperacion.Visible = True
+            Form.lblProducto.Visible = True
+            Form.lblDescripcion.Text = Me.vProducto_DESC
+            Form.lblDescripcion.Visible = True
+            Form.txtProducto.Text = Me.vProducto_ID
+            Form.txtProducto.Enabled = False
+            Form.txtProducto.Visible = True
+            If Me.TipoMovimiento = "2" Then
+                Form.lblPalletContenedora.Text = "Nro.Pallet " & Me.vNro_Pallet & ":"
+            Else
+                Form.lblPalletContenedora.Text = "Nro.Cont. " & Me.vNro_Bulto & ":"
+            End If
+            Form.lblUbicacionOrigen.Visible = False
+            Form.lblUbicacionOrigen.Text = "Ubicacion: " & Me.vPosicion_Cod
+            Form.txtUbicacionOrigen.Text = ""
+            Form.txtUbicacionOrigen.Visible = False
+            Form.lblZonaPreparacion.Text = "Zona de Preparación: " & Me.vPosicionDestino
+
+            Form.lblPalletContenedora.Visible = True
+            Form.txtPalletContenedora.Visible = True
+            Form.txtPalletContenedora.Enabled = True
+            If Me.TipoMovimiento = "2" Then
+                Form.txtPalletContenedora.Text = Me.vNro_Pallet
+            Else
+                Form.txtPalletContenedora.Text = Me.vNro_Bulto
+            End If
+            Form.txtPalletContenedora.Enabled = False
+            Form.lblUbicacionOrigen.Visible = True
+            Form.txtUbicacionOrigen.Visible = True
+            Form.txtUbicacionOrigen.Text = Me.UbicacionOrigen
+            Form.lblZonaPreparacion.Visible = True
+            Form.txtZonaPreparacion.Visible = True
+            Form.txtZonaPreparacion.Text = ""
+            Form.txtZonaPreparacion.Focus()
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, clsName)
+        End Try
+    End Function
 End Class
