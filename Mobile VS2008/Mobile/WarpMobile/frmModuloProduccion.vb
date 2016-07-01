@@ -333,4 +333,8 @@ Public Class frmModuloProduccion
     Private Sub btnCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancelar.Click
         Cancelar()
     End Sub
+
+    Private Sub txtZonaPreparacion_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtZonaPreparacion.TextChanged
+
+    End Sub
 End Class
